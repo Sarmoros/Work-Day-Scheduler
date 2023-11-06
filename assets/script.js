@@ -26,6 +26,19 @@ $(document).ready(function() {
     }
   });  
 
+  for (var i = 9; i <= 17; i++) {
+    var timeBlock = $("<div>").addClass("time-block row");
+    var hourColumn = $("<div>").addClass("col-2 col-md-1 hour text-center py-3").text(i + "AM");
+    var descriptionTextarea = $("<textarea>").addClass("col-8 col-md-10 description").attr("aria-label", "save").append('<i class="fas fa-save" aria-hidden="true"></i>');
+    var saveButton = $("<button>").addClass("btn saveBtn col-2 col-md-1").attr("aria-label", "save").append('<i class="fas fa-save" aria-hidden="true"></i>');
+  
+    timeBlock.attr("id", "hour-" + i);
+    timeBlock.append(hourColumn, descriptionTextarea, saveButton);
+    $(".container-lg").append(timeBlock);
+  }
+
+
+
   // Code to grab the user input from local storage
   $(".time-block").each(function() {
     var timeBlockId = $(this).attr("id");
