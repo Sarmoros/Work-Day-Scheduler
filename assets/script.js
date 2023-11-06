@@ -9,7 +9,23 @@ $(document).ready(function() {
     var timeBlockId = $(this).closest(".time-block").attr("id");
     var userInput = $(this).siblings(".description").val();
     localStorage.setItem(timeBlockId, userInput);
-  })
+  });
+
+  // Getting the current hour in 24-hour format from day.js
+  var currentHour = dayjs().format("H");
+  $(".time-block").each(function() {
+    var timeBlockId = parseInt($(this).attr("id").split("-")[1]);
+    
+    if(timeBlockId < currentHour) {
+      $(this).removeClass("present future").addClass("past");
+    } else if (timeBlockId == currentHour) {
+      $(this).removeClass("past future").addClass("present");
+    } else {
+      $(this).removeClass("past present").addClass("future");
+    }
+  });  
+  
+
 
 
 
