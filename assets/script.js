@@ -29,6 +29,12 @@ $(document).ready(function() {
   for (var i = 9; i <= 17; i++) {
     var timeBlock = $("<div>").addClass("time-block row");
     var hourColumn = $("<div>").addClass("col-2 col-md-1 hour text-center py-3").text(i + "AM");
+
+    var hourText = i > 12 ? i - 12 : i;
+    var amPm = i >= 12 ? "PM" : "AM";
+
+    hourColumn.text(hourText + amPm);
+    
     var descriptionTextarea = $("<textarea>").addClass("col-8 col-md-10 description").attr("aria-label", "save").append('<i class="fas fa-save" aria-hidden="true"></i>');
     var saveButton = $("<button>").addClass("btn saveBtn col-2 col-md-1").attr("aria-label", "save").append('<i class="fas fa-save" aria-hidden="true"></i>');
   
