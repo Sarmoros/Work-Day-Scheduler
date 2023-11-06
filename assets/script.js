@@ -13,6 +13,7 @@ $(document).ready(function() {
 
   // Getting the current hour in 24-hour format from day.js
   var currentHour = dayjs().format("H");
+
   $(".time-block").each(function() {
     var timeBlockId = parseInt($(this).attr("id").split("-")[1]);
     
@@ -24,6 +25,18 @@ $(document).ready(function() {
       $(this).removeClass("past present").addClass("future");
     }
   });  
+
+  // Code to grab the user input from local storage
+  $(".time-block").each(function() {
+    var timeBlockId = $(this).attr("id");
+    var userInput = localStorage.getItem(timeBlockId);
+    
+    if (userInput) {
+      $(this).find(".description").val(userInput);
+    }
+  });
+
+  
   
 
 
